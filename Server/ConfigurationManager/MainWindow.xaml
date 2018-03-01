@@ -1,0 +1,169 @@
+﻿<Window x:Class="Exallon.ConfigurationManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Exallon.ConfigurationManager"
+        Title="Exallon Configuration Manager" 
+        MinHeight="600" 
+        MinWidth="800" 
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow" 
+        Loaded="Window_Loaded" 
+        Closing="Window_Closing" 
+        Icon="/Exallon.ConfigurationManager;component/Images/ic_launcher.ico">
+
+    <Window.Resources>
+        <local:ReqTypeToEnabledConverter x:Key="ReqTypeToEnabledConverter"/>
+    </Window.Resources>
+
+    <DockPanel>
+        <Grid DockPanel.Dock="Bottom" Height="50" Margin="0,0,5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Name="_textStatus" VerticalAlignment="Center" Margin="10,0,0,0" TextWrapping="Wrap"/>
+            <Button Grid.Column="1" Width="90" Height="26" Name="_buttonConnect" Click="ButtonConnect_Click"
+                    IsEnabled="False">Подключиться</Button>
+            <Button Grid.Column="2" Width="80" Height="26" Name="_buttonApply" Click="ButtonApply_Click">Применить</Button>
+            <Button Grid.Column="3" Width="80" Height="26" Name="_buttonCancel" Click="ButtonCancel_Click">Отмена</Button>
+        </Grid>
+        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="Реквизиты справочников" Name="_tabCatalogReqs" >
+                <Grid ShowGridLines="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="650*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--Список "Справочники"-->
+                    <ListView Grid.Column="0" Name="_listViewCatalogs" SelectionChanged="ListViewCatalogs_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="90">
+                                    <GridViewColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <CheckBox 
+                                                Unchecked="CatalogsHeaderShow_CheckChanged" 
+                                                Checked="CatalogsHeaderShow_CheckChanged">Отображать</CheckBox>
+                                        </DataTemplate>
+                                    </GridViewColumn.HeaderTemplate>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding Show}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="170" Header="Справочник" DisplayMemberBinding="{Binding Name}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" 
+                                  ShowsPreview="True" Width="2"/>
+
+                    <!--Список "Реквизиты"-->
+                    <ListView Name="_listViewCatalogRequisites" 
+                              Grid.Column="2"
+                              ItemsSource="{Binding ElementName=_listViewCatalogs, Path=SelectedItem.Requisites}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Width="90">
+                                        <GridViewColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <CheckBox
+                                                    Unchecked="CatalogRequisitesHeaderShow_CheckChanged" 
+                                                    Checked="CatalogRequisitesHeaderShow_CheckChanged">Отображать</CheckBox>
+                                            </DataTemplate>
+                                        </GridViewColumn.HeaderTemplate>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox 
+                                                    IsEnabled="{Binding TypeInfo.Type, Converter={StaticResource ReqTypeToEnabledConverter}}"
+                                                    IsChecked="{Binding Show}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="Наименование" Width="200" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Header="Наименование для отображения" Width="200" DisplayMemberBinding="{Binding Presentation}"/>
+                                    <GridViewColumn Header="Тип" Width="120" DisplayMemberBinding="{Binding TypeInfo.Type}" />
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Реквизиты документов" Name="_tabDocumentReqs">
+                <Grid ShowGridLines="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="650*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--Список "Документы"-->
+                    <ListView Grid.Column="0" Name="_listViewDocuments" SelectionChanged="ListViewDocuments_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="90">
+                                    <GridViewColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <CheckBox 
+                                                Unchecked="DocumentsHeaderShow_CheckChanged" 
+                                                Checked="DocumentsHeaderShow_CheckChanged">Отображать</CheckBox>
+                                        </DataTemplate>
+                                    </GridViewColumn.HeaderTemplate>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding Show}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="170" Header="Документ" DisplayMemberBinding="{Binding Name}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" 
+                                  ShowsPreview="True" Width="2"/>
+
+                    <!--Список "Реквизиты"-->
+                    <ListView Name="_listViewDocumentRequisites" 
+                              Grid.Column="2"
+                              ItemsSource="{Binding ElementName=_listViewDocuments, Path=SelectedItem.Requisites}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Width="90">
+                                        <GridViewColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <CheckBox
+                                                    Unchecked="DocumentRequisitesHeaderShow_CheckChanged" 
+                                                    Checked="DocumentRequisitesHeaderShow_CheckChanged">Отображать</CheckBox>
+                                            </DataTemplate>
+                                        </GridViewColumn.HeaderTemplate>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox 
+                                                    IsEnabled="{Binding TypeInfo.Type, Converter={StaticResource ReqTypeToEnabledConverter}}"
+                                                    IsChecked="{Binding Show}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="Наименование" Width="200" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Header="Наименование для отображения" Width="200" DisplayMemberBinding="{Binding Presentation}"/>
+                                    <GridViewColumn Header="Тип" Width="120" DisplayMemberBinding="{Binding TypeInfo.Type}" />
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

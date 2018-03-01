@@ -1,0 +1,46 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="20dip" 
+    android:stretchColumns="0">
+
+    <TableRow>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:layout_gravity="center"
+            android:paddingBottom="10dip"
+            android:src="@drawable/logo" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            style="@style/Label"
+            android:layout_gravity="left|bottom"
+            android:text="Базы данных:"/>
+
+        <ImageView
+            android:layout_width="32dip"
+            android:layout_height="32dip"
+            android:layout_marginLeft="130dip"
+            android:onClick="onAddButtonClick"
+            android:src="@drawable/database_add" />
+    </TableRow>
+
+    <TableRow>
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:fadingEdgeLength="5dip"
+            android:footerDividersEnabled="false"
+            android:headerDividersEnabled="false" />
+    </TableRow>
+</TableLayout>

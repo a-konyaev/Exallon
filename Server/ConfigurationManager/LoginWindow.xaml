@@ -1,0 +1,39 @@
+﻿<Window x:Class="Exallon.ConfigurationManager.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Авторизация" 
+        Width="400"
+        Height="200"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+                   TextWrapping="Wrap"
+                   Text="Необходимо выполнить инициализацию конфигурации. Введите данные пользователя 1С и нажмите ОК для начали инициализации"/>
+        
+        <Label Grid.Row="1" Grid.Column="0">Имя пользователя</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="_textBoxLogin" Height="26"/>
+
+        <Label Grid.Row="2" Grid.Column="0">Пароль</Label>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="_textBoxPassword" Height="26"/>
+
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center">
+            <Button Margin="0,0,10,0" Height="26" Width="80" Click="Button_OK">OK</Button>
+            <Button Height="26" Width="80" IsCancel="True">Отмена</Button>
+        </StackPanel>
+    </Grid>
+</Window>

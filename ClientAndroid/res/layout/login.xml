@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="20dip">
+
+    <TextView
+        style="@style/Label"
+        android:text="Пользователь"/>
+
+    <EditText
+        android:id="@+id/login_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoText="false"
+        android:capitalize="none"
+        android:gravity="fill_horizontal"
+        android:scrollHorizontally="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        style="@style/Label"
+        android:text="Пароль"/>
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoText="false"
+        android:capitalize="none"
+        android:gravity="fill_horizontal"
+        android:password="true"
+        android:scrollHorizontally="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <CheckBox
+        android:id="@+id/login_autoconnect"
+        style="@style/Checkbox"
+        android:text="Автовход"/>
+
+</LinearLayout>

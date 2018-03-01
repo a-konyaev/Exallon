@@ -1,0 +1,129 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="10dip"
+    android:stretchColumns="*" >
+
+    <TableRow>
+
+        <TextView
+            style="@style/Label"
+            android:text="Наименование"/>
+
+        <TextView
+            style="@style/Label"
+            android:text="Адрес сервера"/>
+    </TableRow>
+
+    <TableRow>
+
+        <EditText
+            android:id="@+id/db_settings_name"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:autoText="false"
+            android:capitalize="none"
+            android:gravity="fill_horizontal"
+            android:inputType="text|textNoSuggestions"
+            android:scrollHorizontally="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/db_settings_server_url"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:autoText="false"
+            android:capitalize="none"
+            android:gravity="fill_horizontal"
+            android:inputType="textUri|textNoSuggestions"
+            android:scrollHorizontally="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            style="@style/Label"
+            android:text="Пользователь"/>
+
+        <TextView
+            style="@style/Label"
+            android:text="Пароль"/>
+    </TableRow>
+
+    <TableRow>
+
+        <EditText
+            android:id="@+id/db_settings_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoText="false"
+            android:capitalize="none"
+            android:gravity="fill_horizontal"
+            android:inputType="text|textNoSuggestions"
+            android:scrollHorizontally="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/db_settings_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoText="false"
+            android:capitalize="none"
+            android:enabled="false"
+            android:gravity="fill_horizontal"
+            android:inputType="textPassword"
+            android:password="true"
+            android:scrollHorizontally="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+
+    <TableRow>
+
+        <CheckBox
+            android:id="@+id/db_settings_autoconnect"
+            style="@style/Checkbox"
+            android:onClick="onAutoconnectCheckboxClick"
+            android:text="Автовход"/>
+
+        <LinearLayout android:layout_gravity="right">
+        <Button
+            android:id="@+id/db_settings_clear"
+            android:onClick="onClearButtonClick"
+            android:text="Очистить БД" 
+            style="@style/Button"
+            android:layout_width="120dip"/>
+        </LinearLayout>
+    </TableRow>
+
+    <TableRow>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_span="2"
+            android:orientation="horizontal"
+            android:paddingTop="40dip" >
+
+            <Button
+                style="@style/Button"
+                android:onClick="onSaveButtonClick"
+                android:text="Сохранить" />
+
+            <Button
+                android:id="@+id/db_settings_delete"
+                style="@style/Button"
+                android:onClick="onDeleteButtonClick"
+                android:text="Удалить" />
+
+            <Button
+                style="@style/Button"
+                android:onClick="onCancelButtonClick"
+                android:text="Отмена" />
+        </LinearLayout>
+    </TableRow>
+
+</TableLayout>

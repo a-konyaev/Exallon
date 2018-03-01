@@ -1,0 +1,50 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="10dip"
+    android:stretchColumns="0">
+
+    <TableRow>
+        <TextView
+            style="@style/Label"
+            android:paddingBottom="5dip"
+            android:text="Сообщение:"/>
+    </TableRow>
+
+    <TableRow>
+
+        <EditText
+            android:id="@+id/feedback_message"
+            android:layout_width="match_parent"
+            android:layout_height="205dip"
+            android:layout_span="3"
+            android:autoText="false"
+            android:capitalize="none"
+            android:gravity="top"
+            android:hint="Введите текст сообщения"
+            android:lines="100"
+            android:maxLength="2048"
+            android:singleLine="false"/>
+    </TableRow>
+
+    <TableRow>
+
+        <CheckBox
+            android:id="@+id/feedback_attach_logs"
+            style="@style/Checkbox"
+            android:text="Прикрепить логи"/>
+
+        <Button
+            style="@style/Button"
+            android:onClick="onSendButtonClick"
+            android:text="Отправить" />
+
+        <Button
+            style="@style/Button"
+            android:onClick="onCancelButtonClick"
+            android:text="Отмена" />
+    </TableRow>
+
+</TableLayout>

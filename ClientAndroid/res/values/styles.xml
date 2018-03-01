@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Label" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/foreground</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">left</item>
+    </style>
+    
+    <style name="Checkbox" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/foreground</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:checked">false</item>
+    </style>
+    
+    <style name="Button" parent="@android:style/Widget.Button">
+        <item name="android:layout_width">100dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/foreground</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+</resources>

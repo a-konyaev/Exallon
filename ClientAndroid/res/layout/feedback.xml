@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="10dip" >
+
+    <TextView
+        style="@style/Label"
+        android:paddingBottom="5dip"
+        android:text="Сообщение:"/>
+
+    <EditText
+        android:id="@+id/feedback_message"
+        android:layout_width="match_parent"
+        android:layout_height="350dip"
+        android:autoText="false"
+        android:capitalize="none"
+        android:gravity="top"
+        android:hint="Введите текст сообщения"
+        android:maxLength="2048"
+        android:lines="100"
+        android:singleLine="false"/>
+
+    <CheckBox
+        android:id="@+id/feedback_attach_logs"
+        style="@style/Checkbox"
+        android:text="Прикрепить логи"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="180dip"
+        android:layout_marginTop="10dip"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            style="@style/Button"
+            android:onClick="onSendButtonClick"
+            android:text="Отправить" />
+
+        <Button
+            style="@style/Button"
+            android:onClick="onCancelButtonClick"
+            android:text="Отмена" />
+    </LinearLayout>
+
+</LinearLayout>
